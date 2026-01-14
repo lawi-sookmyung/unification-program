@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숙명여자대학교 통일교육선도대학사업단</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 숙명여대 블루 + 통일 레드/블루 테마 - 화이트 배경 버전 */
+            --primary-blue: #003876;
+            --primary-dark: #002554;
+            --primary-light: #0056b3;
+            --accent-red: #c8102e;
+            --accent-red-light: #e63946;
+            --accent-red-dark: #9b0a1d;
+            
+            /* 화이트 배경 색상 */
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-section: #f0f4f8;
+            
+            /* 텍스트 색상 */
+            --text-dark: #1a1a2e;
+            --text-body: #333333;
+            --text-muted: #666666;
+            --text-light: #888888;
+            
+            /* 그라데이션 */
+            --gradient-blue: linear-gradient(135deg, #003876 0%, #0056b3 100%);
+            --gradient-red: linear-gradient(135deg, #c8102e 0%, #e63946 100%);
+            --gradient-blue-red: linear-gradient(135deg, #003876 0%, #c8102e 100%);
+            
+            /* 그림자 */
+            --shadow-sm: 0 2px 10px rgba(0, 56, 118, 0.08);
+            --shadow-md: 0 4px 20px rgba(0, 56, 118, 0.12);
+            --shadow-lg: 0 10px 40px rgba(0, 56, 118, 0.15);
+            --shadow-blue: 0 4px 20px rgba(0, 56, 118, 0.3);
+            --shadow-red: 0 4px 20px rgba(200, 16, 46, 0.2);
+            
+            /* 보더 */
+            --border-light: rgba(0, 56, 118, 0.1);
+            --border-medium: rgba(0, 56, 118, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: var(--bg-white);
+            color: var(--text-body);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 3rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.7rem 3rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-blue-red);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            box-shadow: var(--shadow-blue);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
+            color: var(--primary-dark);
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--primary-light);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-blue);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 56, 118, 0.4);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--primary-dark);
+            margin: 6px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+            background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 80% 20%, rgba(0, 56, 118, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 80%, rgba(200, 16, 46, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border-medium);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-badge span {
+            color: var(--text-body);
+            font-weight: 500;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero h1 .highlight-blue {
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 .highlight-red {
+            background: var(--gradient-red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-blue);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 56, 118, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-white);
+            color: var(--primary-blue);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--primary-blue);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Stats - 4대 핵심가치 */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-light);
+            animation: fadeInUp 0.8s ease-out 0.8s backwards;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--bg-white);
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-item:nth-child(odd) .stat-icon {
+            background: var(--gradient-red);
+        }
+
+        .stat-item:nth-child(even) .stat-icon {
+            background: var(--gradient-blue);
+        }
+
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 3rem;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--bg-light);
+            border: 1px solid var(--border-medium);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section - 인사말 */
+        #about {
+            background: var(--bg-section);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-main {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            aspect-ratio: 4/5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(200, 16, 46, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(0, 86, 179, 0.08) 0%, transparent 50%);
+        }
+
+        .director-photo {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .director-photo .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            background: var(--gradient-blue-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            border: 4px solid rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .director-photo h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .director-photo p {
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .about-floating-card {
+            position: absolute;
+            bottom: -2rem;
+            right: -2rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-floating-card h4 {
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.3rem;
+        }
+
+        .about-floating-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            color: var(--text-dark);
+        }
+
+        .about-content .greeting-text {
+            color: var(--text-body);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .about-content .signature {
+            text-align: right;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .about-content .signature p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .about-content .signature .name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
+        }
+
+        /* Vision Section - 4대 핵심가치 상세 */
+        #vision {
+            background: var(--bg-white);
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .vision-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .vision-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .vision-card:nth-child(1)::before,
+        .vision-card:nth-child(3)::before {
+            background: var(--gradient-red);
+        }
+
+        .vision-card:nth-child(2)::before,
+        .vision-card:nth-child(4)::before {
+            background: var(--gradient-blue);
+        }
+
+        .vision-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .vision-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .vision-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .vision-card:nth-child(1) .vision-icon,
+        .vision-card:nth-child(3) .vision-icon {
+            background: var(--gradient-red);
+            box-shadow: var(--shadow-red);
+        }
+
+        .vision-card:nth-child(2) .vision-icon,
+        .vision-card:nth-child(4) .vision-icon {
+            background: var(--gradient-blue);
+            box-shadow: var(--shadow-blue);
+        }
+
+        .vision-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .vision-card:nth-child(1) h3,
+        .vision-card:nth-child(3) h3 {
+            color: var(--accent-red);
+        }
+
+        .vision-card:nth-child(2) h3,
+        .vision-card:nth-child(4) h3 {
+            color: var(--primary-blue);
+        }
+
+        .vision-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* History Section - 연혁 */
+        #history {
+            background: var(--bg-section);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: var(--gradient-blue-red);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: calc(50% + 30px);
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: calc(50% + 30px);
+        }
+
+        .timeline-content {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            max-width: 400px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            border: 3px solid var(--bg-white);
+            z-index: 1;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            background: var(--primary-blue);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--accent-red);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            color: var(--primary-blue);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Organization Section - 조직도 */
+        #organization {
+            background: var(--bg-white);
+        }
+
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .org-level {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .org-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            min-width: 200px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .org-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .org-card.highlight {
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.05) 0%, rgba(200, 16, 46, 0.02) 100%);
+            border-color: var(--accent-red);
+        }
+
+        .org-card.blue-highlight {
+            background: linear-gradient(135deg, rgba(0, 56, 118, 0.05) 0%, rgba(0, 56, 118, 0.02) 100%);
+            border-color: var(--primary-blue);
+        }
+
+        .org-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .org-card.highlight .org-avatar {
+            background: var(--gradient-red);
+        }
+
+        .org-card.blue-highlight .org-avatar {
+            background: var(--gradient-blue);
+        }
+
+        .org-card .org-avatar {
+            background: var(--gradient-blue-red);
+        }
+
+        .org-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark);
+        }
+
+        .org-card .role {
+            font-size: 0.85rem;
+            color: var(--accent-red);
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .org-card.blue-highlight .role {
+            color: var(--primary-blue);
+        }
+
+        .org-card .dept {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .org-connector {
+            width: 3px;
+            height: 40px;
+            background: var(--gradient-blue-red);
+            position: relative;
+            border-radius: 3px;
+        }
+
+        /* Programs Section - 교육과정 */
+        #programs {
+            background: var(--bg-section);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .program-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .program-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .program-card:nth-child(1) .program-header {
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.08) 0%, transparent 100%);
+        }
+
+        .program-card:nth-child(2) .program-header {
+            background: linear-gradient(135deg, rgba(0, 86, 179, 0.08) 0%, transparent 100%);
+        }
+
+        .program-card:nth-child(3) .program-header {
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.05) 0%, rgba(0, 86, 179, 0.05) 100%);
+        }
+
+        .program-level {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .program-card:nth-child(1) .program-level {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .program-card:nth-child(2) .program-level {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .program-card:nth-child(3) .program-level {
+            background: var(--gradient-blue-red);
+            color: white;
+        }
+
+        .program-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .program-header p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .program-content {
+            padding: 2rem;
+        }
+
+        .program-list {
+            list-style: none;
+        }
+
+        .program-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .program-list li:last-child {
+            border-bottom: none;
+        }
+
+        .program-list li::before {
+            content: '✦';
+            color: var(--accent-red);
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        .program-card:nth-child(2) .program-list li::before {
+            color: var(--primary-blue);
+        }
+
+        .program-list li span {
+            font-size: 0.95rem;
+            color: var(--text-body);
+        }
+
+        /* Partners Section - 교류협력 */
+        #partners {
+            background: var(--bg-white);
+        }
+
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .partner-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2rem 3rem;
+            min-width: 250px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .partner-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+
+        .partner-card:nth-child(odd) {
+            border-left: 3px solid var(--accent-red);
+        }
+
+        .partner-card:nth-child(even) {
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .partner-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .partner-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Contact Section - 오시는 길 */
+        #contact {
+            background: var(--bg-section);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .contact-info > p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .contact-item:nth-child(odd) .contact-icon {
+            background: var(--gradient-red);
+        }
+
+        .contact-item:nth-child(even) .contact-icon {
+            background: var(--gradient-blue);
+        }
+
+        .contact-item-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-dark);
+        }
+
+        .contact-item-content p {
+            font-size: 0.95rem;
+            color: var(--text-body);
+            margin: 0;
+        }
+
+        .contact-map {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-placeholder {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .map-placeholder-icon {
+            margin-bottom: 1rem;
+        }
+
+        .map-placeholder p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .map-placeholder h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            padding: 4rem 3rem 2rem;
+            color: white;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-light);
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: var(--shadow-blue);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 56, 118, 0.5);
+        }
+
+        .scroll-top svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .vision-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            nav {
+                padding: 1rem 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-cta {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+            
+            .vision-grid,
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 60px;
+                padding-right: 0;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">통</div>
+                <div class="logo-text">
+                    숙명여자대학교
+                    <span>UNIFICATION EDUCATION</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">인사말</a></li>
+                <li><a href="#vision">비전·CI</a></li>
+                <li><a href="#history">연혁</a></li>
+                <li><a href="#organization">조직도</a></li>
+                <li><a href="#programs">교육과정</a></li>
+                <li><a href="#partners">교류협력</a></li>
+                <li><a href="#contact">오시는 길</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">문의하기</a>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <div class="hero-badge-dot"></div>
+                <span>2025년 통일교육선도대학 선정</span>
+            </div>
+            <h1>
+                <span class="highlight-blue">통일미래</span>를 이끌어갈<br>
+                <span class="highlight-red">여성지도자</span> 양성
+            </h1>
+            <p class="hero-subtitle">
+                숙명여자대학교 통일교육선도대학사업단은 자유, 시민, 균형, 공존의 보편적 가치를 함양한 
+                통일여성리더를 양성하여 한반도의 평화로운 미래를 선도합니다.
+            </p>
+            <div class="hero-buttons">
+                <a href="#programs" class="btn-primary">
+                    교육과정 보기
+                    <span>→</span>
+                </a>
+                <a href="#about" class="btn-secondary">
+                    사업단 소개
+                    <span>↓</span>
+                </a>
+            </div>
+
+            <!-- 4대 핵심가치 -->
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+                            <path d="M12.5 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-2 15l-5-5 1.41-1.41L10.5 14.17l7.09-7.09L19 8.5l-8.5 8.5z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-title">자유나라</div>
+                    <div class="stat-label">기본권이 보장되는<br>민주공화국 이념</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-title">시민중심</div>
+                    <div class="stat-label">자유롭고 정의로운<br>사회 구현</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+                            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-title">균형발전</div>
+                    <div class="stat-label">헌법상 평등 가치<br>실현</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-title">공존공생</div>
+                    <div class="stat-label">과거와 미래의<br>지혜 융합</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - 단장 인사말 -->
+    <section id="about">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="about-image-main">
+                        <div class="director-photo">
+                            <div class="photo-placeholder">
+                                <svg viewBox="0 0 24 24" width="80" height="80" fill="white">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                            </div>
+                            <h4>우병창</h4>
+                            <p>통일교육선도대학사업단장<br>법학부 교수</p>
+                        </div>
+                    </div>
+                    <div class="about-floating-card">
+                        <h4>세상을 바꾸는 부드러운 힘</h4>
+                        <p>Gentle power to change the world</p>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">GREETING</span>
+                    <h3>숙명여자대학교 통일교육선도대학사업단<br>홈페이지에 오신 것을 환영합니다.</h3>
+                    <p class="greeting-text">
+                        정숙·현명·정대의 교훈 아래 민족의 긍지로 미래를 선도하는 우리나라 민족교육의 산실인 숙명여자대학교의 기치 아래, 
+                        통일사업단은 건전한 민주시민의 소양을 갖춘 여성 인재를 육성하여 정보화·개방화 시대를 주도하며 통일에 기여하고 
+                        봉사와 배려 정신을 실천하는 통일여성리더를 양성하기 위해 출범했습니다.
+                    </p>
+                    <p class="greeting-text">
+                        육군학군단 및 공군학군단을 모두 보유한 유일한 여자대학인 숙명여자대학교는 &lt;학생+시민+공무원+군인+연구원&gt; 
+                        협력형 통일교육 모델을 개발하여 통일교육 보편화의 초석을 마련하고 자유, 시민, 균형, 공존 등 보편적 가치를 
+                        함양한 통일여성리더를 양성하기 위해 최선을 다하고자 합니다.
+                    </p>
+                    <p class="greeting-text">
+                        한반도의 통일은 단지 남과 북의 영토적 연결에 그치는 것이 아니라 다양한 분야에 현존하는 갈등의 벽을 넘어서는 것입니다. 
+                        서울 중심에 위치한 숙명여대는 지리적 이점과 120년의 교육 경험을 바탕으로 기존 통일교육 선도대학과 연계체계를 구축하고 
+                        통일교육의 허브가 될 것입니다.
+                    </p>
+                    <div class="signature">
+                        <p>숙명여자대학교 통일교육선도대학사업단장</p>
+                        <p class="name">우 병 창</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section - 비전·CI -->
+    <section id="vision">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">VISION · CI</span>
+                <h2 class="section-title">4대 핵심가치</h2>
+                <p class="section-desc">
+                    자유, 시민, 균형, 공존의 보편적 가치를 함양한 통일미래 세대를 양성합니다
+                </p>
+            </div>
+            <div class="vision-grid">
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <svg viewBox="0 0 24 24" width="36" height="36" fill="white">
+                            <path d="M12.5 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-2 15l-5-5 1.41-1.41L10.5 14.17l7.09-7.09L19 8.5l-8.5 8.5z"/>
+                        </svg>
+                    </div>
+                    <h3>자유나라</h3>
+                    <p>기본권이 보장되는 민주공화국의 이념을 체득하고 전파하여 자유민주주의의 가치를 확산합니다</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <svg viewBox="0 0 24 24" width="36" height="36" fill="white">
+                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                        </svg>
+                    </div>
+                    <h3>시민중심</h3>
+                    <p>시민이 중심이 되어 자유롭고 정의로운 사회를 굳건히 지켜나가는 민주시민 의식을 함양합니다</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <svg viewBox="0 0 24 24" width="36" height="36" fill="white">
+                            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                        </svg>
+                    </div>
+                    <h3>균형발전</h3>
+                    <p>헌법상 평등의 가치를 실현하는 균형적인 사회관계를 구축하여 통일 이후 사회통합에 기여합니다</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <svg viewBox="0 0 24 24" width="36" height="36" fill="white">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                    </div>
+                    <h3>공존공생</h3>
+                    <p>과거와 미래의 경험과 지혜를 현재에 융합하여 최고의 오늘을 이룩하고 남북 화합을 추구합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section - 연혁 -->
+    <section id="history">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">HISTORY</span>
+                <h2 class="section-title">연혁</h2>
+                <p class="section-desc">
+                    숙명여자대학교 통일교육선도대학사업단의 발자취
+                </p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025. 04</div>
+                        <h4>국립통일교육원 협력 체결</h4>
+                        <p>통일교육 전문기관과의 교류협력 MOU 체결</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025. 04</div>
+                        <h4>교류협력 기관 확대</h4>
+                        <p>법학연구소, 서울통일교육센터, 총신대학교 통일개발대학원 등과 협력 체결</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025. 03</div>
+                        <h4>아시아여성연구원·통일부 협력</h4>
+                        <p>여성 관점의 통일 연구 및 정책 협력 기반 마련</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025. 02</div>
+                        <h4>통일교육선도대학사업 시작</h4>
+                        <p>숙명여자대학교 통일교육선도대학 선정 및 사업단 출범</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organization Section - 조직도 -->
+    <section id="organization">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">ORGANIZATION</span>
+                <h2 class="section-title">조직도</h2>
+                <p class="section-desc">
+                    통일교육선도대학사업단 조직 구성
+                </p>
+            </div>
+            <div class="org-chart">
+                <!-- Level 1: 총장 -->
+                <div class="org-level">
+                    <div class="org-card highlight">
+                        <div class="org-avatar">총</div>
+                        <h4>문시연</h4>
+                        <div class="role">총장</div>
+                        <div class="dept">숙명여자대학교</div>
+                    </div>
+                </div>
+                <div class="org-connector"></div>
+                <!-- Level 2: 단장 -->
+                <div class="org-level">
+                    <div class="org-card blue-highlight">
+                        <div class="org-avatar">단</div>
+                        <h4>우병창</h4>
+                        <div class="role">사업단장</div>
+                        <div class="dept">법학부 교수</div>
+                    </div>
+                </div>
+                <div class="org-connector"></div>
+                <!-- Level 3: 운영위원회 / 자문위원회 -->
+                <div class="org-level">
+                    <div class="org-card">
+                        <div class="org-avatar">운</div>
+                        <h4>운영위원회</h4>
+                        <div class="role">사업 운영 총괄</div>
+                        <div class="dept">위원장 포함 위원 구성</div>
+                    </div>
+                    <div class="org-card">
+                        <div class="org-avatar">자</div>
+                        <h4>자문위원회</h4>
+                        <div class="role">전문 자문</div>
+                        <div class="dept">통일·법학·교육 전문가</div>
+                    </div>
+                </div>
+                <div class="org-connector"></div>
+                <!-- Level 4: 실무팀 -->
+                <div class="org-level">
+                    <div class="org-card">
+                        <div class="org-avatar">교</div>
+                        <h4>교육연구팀</h4>
+                        <div class="role">교육과정 개발·운영</div>
+                    </div>
+                    <div class="org-card">
+                        <div class="org-avatar">홍</div>
+                        <h4>홍보협력팀</h4>
+                        <div class="role">대외협력·홍보</div>
+                    </div>
+                    <div class="org-card">
+                        <div class="org-avatar">행</div>
+                        <h4>행정지원팀</h4>
+                        <div class="role">행정·예산 관리</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section - 교육과정 -->
+    <section id="programs">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">EDUCATION</span>
+                <h2 class="section-title">교육과정</h2>
+                <p class="section-desc">
+                    체계적인 통일교육 커리큘럼을 통해 통일여성리더를 양성합니다
+                </p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-header">
+                        <span class="program-level">심화과정</span>
+                        <h3>마이크로디그리</h3>
+                        <p>통일교육 전문 학위과정</p>
+                    </div>
+                    <div class="program-content">
+                        <ul class="program-list">
+                            <li><span>통일사회 법과 제도 (3학점)</span></li>
+                            <li><span>인권보호와 국제기준 (3학점)</span></li>
+                            <li><span>통일미래와 사회통합 (3학점)</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-header">
+                        <span class="program-level">필수교양</span>
+                        <h3>통일미래와 자유시민</h3>
+                        <p>입문 과정 (3학점)</p>
+                    </div>
+                    <div class="program-content">
+                        <ul class="program-list">
+                            <li><span>자유민주주의 신념과 민족공동체 의식</span></li>
+                            <li><span>올바른 통일관 및 안보관 확립</span></li>
+                            <li><span>통일문제·북한·통일환경 이해</span></li>
+                            <li><span>민주시민교육 및 인간안보 교육</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-header">
+                        <span class="program-level">핵심교양</span>
+                        <h3>유럽연합: 통합의 길</h3>
+                        <p>기초 과정 (3학점)</p>
+                    </div>
+                    <div class="program-content">
+                        <ul class="program-list">
+                            <li><span>유럽 통합 과정 역사·이론 학습</span></li>
+                            <li><span>경제·정치·사회적 통합 사례 연구</span></li>
+                            <li><span>현장체험학습 (브뤼셀 방문)</span></li>
+                            <li><span>통일융합적 사고 함양</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section - 교류협력 -->
+    <section id="partners">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">PARTNERS</span>
+                <h2 class="section-title">교류협력</h2>
+                <p class="section-desc">
+                    국내외 통일교육 유관기관과 협력하여 통일교육의 허브를 구축합니다
+                </p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <h4>통일부</h4>
+                    <p>2025. 03. 05</p>
+                </div>
+                <div class="partner-card">
+                    <h4>아시아여성연구원</h4>
+                    <p>2025. 03. 05</p>
+                </div>
+                <div class="partner-card">
+                    <h4>서울통일교육센터<br>총신평화통일연구소</h4>
+                    <p>2025. 04. 23</p>
+                </div>
+                <div class="partner-card">
+                    <h4>총신대학교<br>통일개발대학원</h4>
+                    <p>2025. 04. 23</p>
+                </div>
+                <div class="partner-card">
+                    <h4>숙명여자대학교<br>법학연구소</h4>
+                    <p>2025. 04. 23</p>
+                </div>
+                <div class="partner-card">
+                    <h4>국립통일교육원</h4>
+                    <p>2025. 04. 23</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - 오시는 길 -->
+    <section id="contact">
+        <div class="section-container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">CONTACT</span>
+                    <h3>오시는 길</h3>
+                    <p>
+                        통일교육선도대학사업단에 대해 궁금한 점이 있으시면 
+                        언제든지 연락해 주세요.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" fill="white" stroke="white"/>
+                                    <circle cx="12" cy="10" r="3" fill="#003876" stroke="#003876"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>주소</h4>
+                                <p>서울특별시 용산구 청파로47길 100<br>숙명여자대학교 진리관 511호</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="white">
+                                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>전화</h4>
+                                <p>02-2077-7359</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="white">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>이메일</h4>
+                                <p>tongil@sookmyung.ac.kr</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-4-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-6H6V6h5v5zm2 0V6h5v5h-5zm3.5 6c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>교통편</h4>
+                                <p>지하철 4호선 숙대입구역<br>버스 150, 151, 152, 162</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <div class="map-placeholder">
+                        <div class="map-placeholder-icon">
+                            <svg viewBox="0 0 24 24" width="64" height="64" fill="url(#mapGradient)">
+                                <defs>
+                                    <linearGradient id="mapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#003876"/>
+                                        <stop offset="100%" style="stop-color:#c8102e"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/>
+                            </svg>
+                        </div>
+                        <h4>숙명여자대학교 제1캠퍼스</h4>
+                        <p>진리관 511호</p>
+                        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                            04310 서울특별시 용산구 청파로47길 100<br>
+                            100, Cheongpa-ro 47-gil, Yongsan-gu, Seoul
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>숙명여자대학교 통일교육선도대학사업단</h3>
+                    <p>
+                        세상을 바꾸는 부드러운 힘<br>
+                        통일미래를 이끌어갈 여성지도자를 양성합니다.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>사업단 소개</h4>
+                    <ul>
+                        <li><a href="#about">인사말</a></li>
+                        <li><a href="#vision">비전·CI</a></li>
+                        <li><a href="#history">연혁</a></li>
+                        <li><a href="#organization">조직도</a></li>
+                        <li><a href="#partners">교류협력</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>연구·교육</h4>
+                    <ul>
+                        <li><a href="#programs">마이크로디그리</a></li>
+                        <li><a href="#">통일의식조사</a></li>
+                        <li><a href="#">인턴십 프로그램</a></li>
+                        <li><a href="#">사업단 일정</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>바로가기</h4>
+                    <ul>
+                        <li><a href="https://www.sookmyung.ac.kr" target="_blank">숙명여자대학교</a></li>
+                        <li><a href="#">법학연구소</a></li>
+                        <li><a href="#">아시아여성연구원</a></li>
+                        <li><a href="https://www.uniedu.go.kr" target="_blank">국립통일교육원</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 숙명여자대학교 통일교육선도대학사업단. All rights reserved.</p>
+                <p>04310 서울특별시 용산구 청파로47길 100 숙명여자대학교 진리관 511호 | Tel. 02-2077-7359</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.vision-card, .program-card, .org-card, .partner-card, .timeline-content, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
