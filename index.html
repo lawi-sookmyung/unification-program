@@ -1604,6 +1604,212 @@
                 padding: 0.6rem 1rem;
             }
         }
+
+        /* ======================== Board Section - 게시판 ======================== */
+        #board { background: var(--bg-white); }
+
+        .board-auth-bar {
+            display: flex; justify-content: flex-end; align-items: center; gap: 1rem;
+            margin-bottom: 2rem; flex-wrap: wrap;
+        }
+        .board-auth-bar .auth-user {
+            display: flex; align-items: center; gap: 0.6rem;
+            font-size: 0.9rem; color: var(--text-body);
+        }
+        .board-auth-bar .auth-user img {
+            width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--border-medium);
+        }
+        .board-auth-bar .auth-user .admin-badge {
+            background: var(--accent-red); color: #fff; font-size: 0.7rem;
+            padding: 0.15rem 0.5rem; border-radius: 50px; font-weight: 700;
+        }
+        .board-btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.6rem 1.4rem; border-radius: 50px; font-size: 0.85rem;
+            font-weight: 600; border: none; cursor: pointer; transition: all 0.3s ease;
+            text-decoration: none; font-family: inherit;
+        }
+        .board-btn-primary { background: var(--gradient-blue); color: #fff; box-shadow: var(--shadow-blue); }
+        .board-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(0,56,118,0.4); }
+        .board-btn-red { background: var(--gradient-red); color: #fff; box-shadow: var(--shadow-red); }
+        .board-btn-red:hover { transform: translateY(-2px); }
+        .board-btn-outline {
+            background: var(--bg-white); color: var(--primary-blue);
+            border: 1.5px solid var(--primary-blue);
+        }
+        .board-btn-outline:hover { background: var(--primary-blue); color: #fff; }
+        .board-btn-sm { padding: 0.4rem 1rem; font-size: 0.78rem; }
+        .board-btn-google {
+            background: #fff; color: #333; border: 1.5px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .board-btn-google:hover { background: #f8f8f8; transform: translateY(-1px); }
+        .board-btn-google svg { width: 18px; height: 18px; }
+
+        /* Tabs */
+        .board-tabs {
+            display: flex; gap: 0.5rem; margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-light); padding-bottom: 0;
+        }
+        .board-tab {
+            padding: 0.8rem 1.5rem; border: none; background: none; cursor: pointer;
+            font-family: 'Gowun Batang', serif; font-size: 1rem; font-weight: 500;
+            color: var(--text-muted); position: relative; transition: all 0.3s ease;
+            border-bottom: 3px solid transparent; margin-bottom: -2px;
+        }
+        .board-tab.active { color: var(--primary-blue); border-bottom-color: var(--primary-blue); font-weight: 700; }
+        .board-tab:hover:not(.active) { color: var(--text-body); }
+
+        /* Search */
+        .board-search {
+            display: flex; gap: 0.5rem; margin-bottom: 1.5rem;
+        }
+        .board-search input {
+            flex: 1; padding: 0.7rem 1.2rem; border: 1.5px solid var(--border-medium);
+            border-radius: 50px; font-size: 0.9rem; font-family: inherit;
+            outline: none; transition: border-color 0.3s;
+        }
+        .board-search input:focus { border-color: var(--primary-blue); }
+
+        /* Table */
+        .board-table-wrap {
+            background: var(--bg-white); border: 1px solid var(--border-light);
+            border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);
+        }
+        .board-table { width: 100%; border-collapse: collapse; }
+        .board-table thead { background: var(--bg-light); }
+        .board-table th {
+            padding: 1rem 1.2rem; font-size: 0.85rem; font-weight: 700;
+            color: var(--primary-blue); text-align: left;
+            border-bottom: 2px solid var(--border-medium);
+            font-family: 'Montserrat', 'Noto Serif KR', serif;
+        }
+        .board-table td {
+            padding: 0.9rem 1.2rem; font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-light); color: var(--text-body);
+        }
+        .board-table tbody tr { transition: background 0.2s; cursor: pointer; }
+        .board-table tbody tr:hover { background: rgba(0,56,118,0.03); }
+        .board-table tbody tr:last-child td { border-bottom: none; }
+        .board-table .col-no { width: 60px; text-align: center; color: var(--text-light); font-size: 0.85rem; }
+        .board-table .col-title { min-width: 200px; }
+        .board-table .col-title a {
+            color: var(--text-dark); text-decoration: none; font-weight: 500; transition: color 0.2s;
+        }
+        .board-table .col-title a:hover { color: var(--primary-blue); }
+        .board-table .col-author, .board-table .col-date, .board-table .col-views {
+            width: 100px; text-align: center; color: var(--text-muted); font-size: 0.85rem;
+        }
+        .board-notice-badge {
+            display: inline-block; background: var(--accent-red); color: #fff;
+            font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 50px;
+            font-weight: 700; margin-right: 0.5rem; vertical-align: middle;
+        }
+        .board-new-badge {
+            display: inline-block; background: var(--primary-blue); color: #fff;
+            font-size: 0.6rem; padding: 0.1rem 0.4rem; border-radius: 50px;
+            font-weight: 700; margin-left: 0.5rem; vertical-align: middle;
+        }
+        .board-file-icon { color: var(--primary-light); margin-left: 0.3rem; vertical-align: middle; }
+
+        /* Pagination */
+        .board-pagination {
+            display: flex; justify-content: center; gap: 0.3rem;
+            margin-top: 2rem; flex-wrap: wrap;
+        }
+        .board-page-btn {
+            width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border-light);
+            background: var(--bg-white); color: var(--text-body); cursor: pointer;
+            font-size: 0.85rem; transition: all 0.2s; display: flex;
+            align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif;
+        }
+        .board-page-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+        .board-page-btn.active {
+            background: var(--gradient-blue); color: #fff; border-color: var(--primary-blue);
+        }
+
+        /* Post View */
+        .board-post-view {
+            background: var(--bg-white); border: 1px solid var(--border-light);
+            border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-sm);
+        }
+        .board-post-header {
+            padding: 2rem 2.5rem; border-bottom: 1px solid var(--border-light);
+            background: var(--bg-light);
+        }
+        .board-post-header h2 {
+            font-family: 'Gowun Batang', serif; font-size: 1.5rem;
+            font-weight: 700; color: var(--text-dark); margin-bottom: 0.8rem;
+        }
+        .board-post-meta {
+            display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+        .board-post-meta span { display: flex; align-items: center; gap: 0.3rem; }
+        .board-post-body {
+            padding: 2.5rem; min-height: 200px; line-height: 2;
+            font-size: 1rem; color: var(--text-body); white-space: pre-wrap;
+        }
+        .board-post-actions {
+            padding: 1.5rem 2.5rem; border-top: 1px solid var(--border-light);
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+        }
+
+        /* Write / Edit Form */
+        .board-form { display: flex; flex-direction: column; gap: 1.2rem; }
+        .board-form label {
+            font-family: 'Gowun Batang', serif; font-weight: 700; font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+        .board-form input[type="text"],
+        .board-form select {
+            padding: 0.8rem 1.2rem; border: 1.5px solid var(--border-medium);
+            border-radius: 12px; font-size: 0.95rem; font-family: inherit;
+            outline: none; transition: border-color 0.3s;
+        }
+        .board-form input[type="text"]:focus,
+        .board-form select:focus,
+        .board-form textarea:focus { border-color: var(--primary-blue); }
+        .board-form textarea {
+            padding: 1rem 1.2rem; border: 1.5px solid var(--border-medium);
+            border-radius: 12px; font-size: 0.95rem; font-family: inherit;
+            min-height: 300px; resize: vertical; outline: none; line-height: 1.8;
+            transition: border-color 0.3s;
+        }
+        .board-form-actions {
+            display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem;
+        }
+        .board-form .board-notice-check {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.9rem; color: var(--text-body);
+        }
+        .board-form .board-notice-check input { width: 18px; height: 18px; accent-color: var(--accent-red); }
+
+        /* Empty state */
+        .board-empty {
+            text-align: center; padding: 4rem 2rem; color: var(--text-muted); font-size: 0.95rem;
+        }
+        .board-empty svg { opacity: 0.3; margin-bottom: 1rem; }
+
+        /* Loading */
+        .board-loading {
+            text-align: center; padding: 3rem; color: var(--text-muted);
+        }
+        .board-loading .spinner {
+            width: 36px; height: 36px; border: 3px solid var(--border-light);
+            border-top-color: var(--primary-blue); border-radius: 50%;
+            animation: boardSpin 0.8s linear infinite; margin: 0 auto 1rem;
+        }
+        @keyframes boardSpin { to { transform: rotate(360deg); } }
+
+        /* Board responsive */
+        @media (max-width: 768px) {
+            .board-table .col-author, .board-table .col-views { display: none; }
+            .board-table th, .board-table td { padding: 0.7rem 0.8rem; }
+            .board-tabs { overflow-x: auto; }
+            .board-post-header, .board-post-body, .board-post-actions { padding: 1.5rem; }
+            .board-search { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
@@ -1625,6 +1831,7 @@
                 <li><a href="#programs">교육과정</a></li>
                 <li><a href="#partners">교류협력</a></li>
                 <li><a href="#contact">오시는 길</a></li>
+                <li><a href="#board">게시판</a></li>
             </ul>
             <a href="#contact" class="nav-cta">문의하기</a>
             <button class="mobile-menu-btn">
@@ -2089,7 +2296,7 @@
                             </div>
                             <div class="contact-item-content">
                                 <h4>이메일</h4>
-                                <p><a href="mailto:sm22511@sookmyung.ac.kr">sm22511@sookmyung.ac.kr</a></p>
+                                <p><a href="/cdn-cgi/l/email-protection#5d2e306f6f686c6c1d2e323236302428333a733c3e73362f"><span class="__cf_email__" data-cfemail="31425c030304000071425e5e5a5c48445f561f50521f5a43">[email&#160;protected]</span></a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -2135,6 +2342,68 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Board Section - 게시판 -->
+    <section id="board">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">BOARD</span>
+                <h2 class="section-title">게시판</h2>
+                <p class="section-desc">사업단 공지사항 및 소식을 확인하세요</p>
+            </div>
+
+            <!-- Auth Bar -->
+            <div class="board-auth-bar">
+                <div id="boardAuthArea"></div>
+            </div>
+
+            <!-- Board Container -->
+            <div id="boardContainer">
+                <!-- Tabs -->
+                <div class="board-tabs">
+                    <button class="board-tab active" data-category="notice" onclick="boardApp.switchTab('notice')">공지사항</button>
+                    <button class="board-tab" data-category="free" onclick="boardApp.switchTab('free')">자유게시판</button>
+                    <button class="board-tab" data-category="resource" onclick="boardApp.switchTab('resource')">자료실</button>
+                </div>
+
+                <!-- Search & Write -->
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
+                    <div class="board-search" style="margin-bottom:0; flex:1; min-width:250px;">
+                        <input type="text" id="boardSearchInput" placeholder="검색어를 입력하세요" onkeyup="if(event.key==='Enter') boardApp.search()">
+                        <button class="board-btn board-btn-primary board-btn-sm" onclick="boardApp.search()">검색</button>
+                    </div>
+                    <div id="boardWriteBtn"></div>
+                </div>
+
+                <!-- Board List View -->
+                <div id="boardListView">
+                    <div class="board-table-wrap">
+                        <table class="board-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-no">번호</th>
+                                    <th class="col-title">제목</th>
+                                    <th class="col-author">작성자</th>
+                                    <th class="col-date">작성일</th>
+                                    <th class="col-views">조회</th>
+                                </tr>
+                            </thead>
+                            <tbody id="boardTableBody">
+                                <tr><td colspan="5" class="board-loading"><div class="spinner"></div>로딩 중...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="board-pagination" id="boardPagination"></div>
+                </div>
+
+                <!-- Post View -->
+                <div id="boardPostView" style="display:none;"></div>
+
+                <!-- Write / Edit View -->
+                <div id="boardWriteView" style="display:none;"></div>
             </div>
         </div>
     </section>
@@ -2197,6 +2466,7 @@
                         <li><a href="#">통일의식조사</a></li>
                         <li><a href="#">인턴십 프로그램</a></li>
                         <li><a href="#">사업단 일정</a></li>
+                        <li><a href="#board">게시판</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -2223,7 +2493,7 @@
         </svg>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
@@ -2269,9 +2539,498 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                          entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.vision-card, .program-card, .org-card, .partner-card, .timeline-content, .stat-item').for
+        document.querySelectorAll('.stat-item, .vision-card, .program-card, .partner-card, .timeline-item, .org-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+    <!-- Firebase SDK (v9 compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <script>
+    /* =====================================================
+       게시판 시스템 - Firebase Firestore + Google OAuth
+       숙명여자대학교 통일교육선도대학사업단
+       ===================================================== */
+    const boardApp = (() => {
+        // ── Firebase Configuration ──
+        // ★★★ 아래 firebaseConfig를 실제 Firebase 프로젝트 설정으로 교체하세요 ★★★
+        const firebaseConfig = {
+            apiKey: "AIzaSyA0Oyf1cJ1EO-Za6w1P3euSDfrblNr1PzI",
+            authDomain: "sookmyung-unification.firebaseapp.com",
+            projectId: "sookmyung-unification",
+            storageBucket: "sookmyung-unification.firebasestorage.app",
+            messagingSenderId: "833206727666",
+            appId: "1:833206727666:web:338bf0506aa31f1740316b"
+        };
+
+        // ── Admin Emails (Google 계정) ──
+        const ADMIN_EMAILS = [
+            'lawi@sookmyung.ac.kr',
+            'sm22511@sookmyung.ac.kr'
+        ];
+
+        // ── State ──
+        let db = null, auth = null, provider = null;
+        let firebaseReady = false;
+        let currentUser = null;
+        let isAdmin = false;
+        let currentCategory = 'notice';
+        let currentPage = 1;
+        let searchQuery = '';
+        const POSTS_PER_PAGE = 10;
+
+        // ── Demo Data (Firebase 미설정 시) ──
+        const DEMO_DATA = {
+            notice: [
+                { id: 'd1', title: '2025학년도 2학기 통일교육 마이크로디그리 수강 안내', author: '사업단', date: '2025-06-01', views: 234, isNotice: true, content: '2025학년도 2학기 통일교육 마이크로디그리 과정 수강신청 안내입니다.\n\n1. 수강신청 기간: 2025.08.18(월) ~ 08.22(금)\n2. 대상: 숙명여자대학교 재학생 전원\n3. 개설 과목:\n   - 통일과 헌법 (3학점)\n   - 한반도 평화와 여성 리더십 (3학점)\n   - 북한사회와 문화의 이해 (3학점)\n\n많은 관심 부탁드립니다.' },
+                { id: 'd2', title: '국립통일교육원 협력 MOU 체결 안내', author: '사업단', date: '2025-05-20', views: 189, isNotice: true, content: '숙명여자대학교 통일교육선도대학사업단과 국립통일교육원 간 업무협약(MOU)이 체결되었습니다.\n\n양 기관은 통일교육 콘텐츠 공동개발, 강사 교류, 학생 인턴십 프로그램 등에서 상호 협력할 예정입니다.' },
+                { id: 'd3', title: '통일교육 특강 시리즈 제3회 개최 안내', author: '사업단', date: '2025-05-15', views: 156, isNotice: false, content: '통일교육 특강 시리즈 제3회를 개최합니다.\n\n주제: "한반도 평화와 여성의 역할"\n일시: 2025.05.30(금) 14:00\n장소: 숙명여자대학교 진리관 511호\n강사: 김OO 교수 (통일연구원)\n\n사전 신청: 사업단 이메일로 신청' },
+                { id: 'd4', title: '2025 통일의식조사 참여 안내', author: '사업단', date: '2025-05-10', views: 98, isNotice: false, content: '2025년 통일의식조사에 참여해 주세요.\n\n대상: 숙명여자대학교 재학생\n기간: 2025.05.10 ~ 05.31\n소요시간: 약 10분\n\n설문 완료 시 소정의 상품을 드립니다.' },
+                { id: 'd5', title: '사업단 홈페이지 개설 안내', author: '관리자', date: '2025-04-01', views: 312, isNotice: true, content: '숙명여자대학교 통일교육선도대학사업단 홈페이지가 개설되었습니다.\n\n사업단의 활동, 교육과정, 공지사항 등을 확인하실 수 있습니다.\n많은 방문 부탁드립니다.' },
+            ],
+            free: [
+                { id: 'd6', title: '통일교육 수강 후기 공유합니다', author: '김숙명', date: '2025-05-28', views: 67, isNotice: false, content: '이번 학기 "통일과 헌법" 수업을 수강했는데, 정말 유익한 강의였습니다.\n\n통일에 대해 막연하게 생각하고 있었는데, 헌법적 관점에서 체계적으로 배울 수 있어서 좋았습니다. 특히 남북한 법체계 비교 파트가 인상 깊었어요.\n\n다음 학기에도 관련 수업을 들을 예정입니다.' },
+                { id: 'd7', title: '통일 관련 추천 도서 목록', author: '이화평', date: '2025-05-25', views: 45, isNotice: false, content: '통일 관련 추천 도서를 공유합니다.\n\n1. "통일 독일에서 배우는 한반도 통일" - 홍OO\n2. "한반도의 내일을 묻다" - 박OO\n3. "평화를 향한 여정" - 김OO\n\n좋은 책이 있으면 댓글로 추천 부탁드려요!' },
+            ],
+            resource: [
+                { id: 'd8', title: '[자료] 2025 통일교육 가이드북 (PDF)', author: '사업단', date: '2025-05-20', views: 123, isNotice: false, hasFile: true, content: '2025년 통일교육 가이드북을 공유합니다.\n\n본 자료는 사업단에서 제작한 통일교육 참고자료입니다.\n교육 및 연구 목적으로 활용해 주세요.' },
+                { id: 'd9', title: '[자료] 한반도 평화 프로세스 연표', author: '사업단', date: '2025-05-15', views: 89, isNotice: false, hasFile: true, content: '한반도 평화 프로세스 연표 자료입니다.\n\n1945년 광복 이후 현재까지의 남북관계 주요 사건을 정리했습니다.' },
+                { id: 'd10', title: '[자료] 통일교육 강의 PPT 템플릿', author: '사업단', date: '2025-05-01', views: 156, isNotice: false, hasFile: true, content: '통일교육 강의용 PPT 템플릿입니다.\n\n사업단의 CI 가이드라인에 맞춰 제작되었습니다.\n자유롭게 활용해 주세요.' },
+            ]
+        };
+
+        // ── Initialize ──
+        function init() {
+            try {
+                if (firebaseConfig.apiKey !== "YOUR_API_KEY") {
+                    firebase.initializeApp(firebaseConfig);
+                    db = firebase.firestore();
+                    auth = firebase.auth();
+                    provider = new firebase.auth.GoogleAuthProvider();
+                    provider.setCustomParameters({ prompt: 'select_account' });
+                    firebaseReady = true;
+
+                    auth.onAuthStateChanged(user => {
+                        currentUser = user;
+                        isAdmin = user ? ADMIN_EMAILS.includes(user.email) : false;
+                        renderAuthArea();
+                        renderWriteButton();
+                    });
+                } else {
+                    console.log('📋 게시판 데모 모드: Firebase 설정 후 실제 데이터 사용 가능');
+                    renderAuthArea();
+                    renderWriteButton();
+                }
+            } catch (e) {
+                console.warn('Firebase 초기화 실패, 데모 모드로 실행:', e);
+                renderAuthArea();
+                renderWriteButton();
+            }
+            loadPosts();
+        }
+
+        // ── Auth ──
+        function renderAuthArea() {
+            const area = document.getElementById('boardAuthArea');
+            if (!area) return;
+            if (!firebaseReady) {
+                area.innerHTML = `
+                    <span style="font-size:0.8rem;color:var(--text-light);background:var(--bg-light);padding:0.4rem 1rem;border-radius:50px;">
+                        ℹ️ 데모 모드 · Firebase 설정 후 로그인 가능
+                    </span>`;
+                return;
+            }
+            if (currentUser) {
+                area.innerHTML = `
+                    <div class="auth-user">
+                        <img src="${currentUser.photoURL || ''}" alt="" onerror="this.style.display='none'">
+                        <span>${currentUser.displayName || currentUser.email}</span>
+                        ${isAdmin ? '<span class="admin-badge">관리자</span>' : ''}
+                    </div>
+                    <button class="board-btn board-btn-outline board-btn-sm" onclick="boardApp.logout()">로그아웃</button>`;
+            } else {
+                area.innerHTML = `
+                    <button class="board-btn board-btn-google" onclick="boardApp.login()">
+                        <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                        Google 로그인
+                    </button>`;
+            }
+        }
+
+        async function login() {
+            if (!firebaseReady) return alert('Firebase가 설정되지 않았습니다.\nfirebaseConfig를 실제 값으로 교체해 주세요.');
+            try { await auth.signInWithPopup(provider); }
+            catch (e) { console.error('로그인 실패:', e); alert('로그인에 실패했습니다.'); }
+        }
+
+        async function logout() {
+            if (!firebaseReady) return;
+            try { await auth.signOut(); currentUser = null; isAdmin = false; }
+            catch (e) { console.error('로그아웃 실패:', e); }
+        }
+
+        // ── Write Button ──
+        function renderWriteButton() {
+            const btn = document.getElementById('boardWriteBtn');
+            if (!btn) return;
+            if (isAdmin) {
+                btn.innerHTML = `<button class="board-btn board-btn-red" onclick="boardApp.showWriteForm()">✏️ 글쓰기</button>`;
+            } else {
+                btn.innerHTML = '';
+            }
+        }
+
+        // ── Load Posts ──
+        async function loadPosts() {
+            const tbody = document.getElementById('boardTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = '<tr><td colspan="5" class="board-loading"><div class="spinner"></div>로딩 중...</td></tr>';
+
+            let posts = [];
+            if (firebaseReady) {
+                try {
+                    let query = db.collection('posts').where('category', '==', currentCategory).orderBy('isNotice', 'desc').orderBy('createdAt', 'desc');
+                    const snapshot = await query.get();
+                    posts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                } catch (e) {
+                    console.error('게시글 로딩 실패:', e);
+                    posts = DEMO_DATA[currentCategory] || [];
+                }
+            } else {
+                posts = DEMO_DATA[currentCategory] || [];
+            }
+
+            // Search filter
+            if (searchQuery) {
+                const q = searchQuery.toLowerCase();
+                posts = posts.filter(p =>
+                    (p.title || '').toLowerCase().includes(q) ||
+                    (p.content || '').toLowerCase().includes(q) ||
+                    (p.author || '').toLowerCase().includes(q)
+                );
+            }
+
+            renderTable(posts);
+        }
+
+        function renderTable(posts) {
+            const tbody = document.getElementById('boardTableBody');
+            const pagination = document.getElementById('boardPagination');
+
+            if (!posts.length) {
+                tbody.innerHTML = `<tr><td colspan="5" class="board-empty">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--text-light)"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg>
+                    <p>등록된 게시글이 없습니다.</p>
+                </td></tr>`;
+                pagination.innerHTML = '';
+                return;
+            }
+
+            const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+            if (currentPage > totalPages) currentPage = totalPages;
+            const start = (currentPage - 1) * POSTS_PER_PAGE;
+            const pagePosts = posts.slice(start, start + POSTS_PER_PAGE);
+            const totalCount = posts.length;
+
+            tbody.innerHTML = pagePosts.map((p, i) => {
+                const no = totalCount - start - i;
+                const isNew = p.date && (Date.now() - new Date(p.date).getTime()) < 7 * 24 * 60 * 60 * 1000;
+                return `<tr onclick="boardApp.viewPost('${p.id}')">
+                    <td class="col-no">${p.isNotice ? '<span class="board-notice-badge">공지</span>' : no}</td>
+                    <td class="col-title">
+                        <a href="javascript:void(0)">${escHtml(p.title)}</a>
+                        ${isNew ? '<span class="board-new-badge">N</span>' : ''}
+                        ${p.hasFile ? '<span class="board-file-icon">📎</span>' : ''}
+                    </td>
+                    <td class="col-author">${escHtml(p.author || '익명')}</td>
+                    <td class="col-date">${formatDate(p.date || p.createdAt)}</td>
+                    <td class="col-views">${p.views || 0}</td>
+                </tr>`;
+            }).join('');
+
+            // Pagination
+            if (totalPages <= 1) { pagination.innerHTML = ''; return; }
+            let pHtml = '';
+            if (currentPage > 1) pHtml += `<button class="board-page-btn" onclick="boardApp.goPage(${currentPage - 1})">‹</button>`;
+            for (let i = 1; i <= totalPages; i++) {
+                pHtml += `<button class="board-page-btn ${i === currentPage ? 'active' : ''}" onclick="boardApp.goPage(${i})">${i}</button>`;
+            }
+            if (currentPage < totalPages) pHtml += `<button class="board-page-btn" onclick="boardApp.goPage(${currentPage + 1})">›</button>`;
+            pagination.innerHTML = pHtml;
+        }
+
+        // ── View Post ──
+        async function viewPost(id) {
+            const listView = document.getElementById('boardListView');
+            const postView = document.getElementById('boardPostView');
+            const writeView = document.getElementById('boardWriteView');
+
+            let post = null;
+            if (firebaseReady) {
+                try {
+                    const doc = await db.collection('posts').doc(id).get();
+                    if (doc.exists) {
+                        post = { id: doc.id, ...doc.data() };
+                        // Increment views
+                        db.collection('posts').doc(id).update({ views: firebase.firestore.FieldValue.increment(1) });
+                    }
+                } catch (e) { console.error(e); }
+            }
+            // Fallback to demo data
+            if (!post) {
+                for (const cat of Object.values(DEMO_DATA)) {
+                    post = cat.find(p => p.id === id);
+                    if (post) break;
+                }
+            }
+            if (!post) return;
+
+            listView.style.display = 'none';
+            writeView.style.display = 'none';
+            postView.style.display = 'block';
+
+            postView.innerHTML = `
+                <div class="board-post-view">
+                    <div class="board-post-header">
+                        <h2>${escHtml(post.title)}</h2>
+                        <div class="board-post-meta">
+                            <span>👤 ${escHtml(post.author || '익명')}</span>
+                            <span>📅 ${formatDate(post.date || post.createdAt)}</span>
+                            <span>👁 조회 ${(post.views || 0) + 1}</span>
+                        </div>
+                    </div>
+                    <div class="board-post-body">${escHtml(post.content || '')}</div>
+                    <div class="board-post-actions">
+                        <button class="board-btn board-btn-outline board-btn-sm" onclick="boardApp.backToList()">← 목록</button>
+                        <div style="display:flex;gap:0.5rem;">
+                            ${isAdmin ? `
+                                <button class="board-btn board-btn-primary board-btn-sm" onclick="boardApp.showEditForm('${post.id}')">수정</button>
+                                <button class="board-btn board-btn-red board-btn-sm" onclick="boardApp.deletePost('${post.id}')">삭제</button>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        // ── Write Form ──
+        function showWriteForm(editId) {
+            if (!isAdmin) return alert('관리자만 글을 작성할 수 있습니다.');
+            const listView = document.getElementById('boardListView');
+            const postView = document.getElementById('boardPostView');
+            const writeView = document.getElementById('boardWriteView');
+
+            listView.style.display = 'none';
+            postView.style.display = 'none';
+            writeView.style.display = 'block';
+
+            writeView.innerHTML = `
+                <div class="board-post-view">
+                    <div class="board-post-header">
+                        <h2>${editId ? '게시글 수정' : '새 게시글 작성'}</h2>
+                    </div>
+                    <div class="board-post-body" style="min-height:auto;">
+                        <form class="board-form" onsubmit="event.preventDefault(); boardApp.savePost('${editId || ''}');">
+                            <div>
+                                <label>카테고리</label>
+                                <select id="writeCategory">
+                                    <option value="notice" ${currentCategory === 'notice' ? 'selected' : ''}>공지사항</option>
+                                    <option value="free" ${currentCategory === 'free' ? 'selected' : ''}>자유게시판</option>
+                                    <option value="resource" ${currentCategory === 'resource' ? 'selected' : ''}>자료실</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>제목</label>
+                                <input type="text" id="writeTitle" placeholder="제목을 입력하세요" required>
+                            </div>
+                            <div>
+                                <label>내용</label>
+                                <textarea id="writeContent" placeholder="내용을 입력하세요" required></textarea>
+                            </div>
+                            <div class="board-notice-check">
+                                <input type="checkbox" id="writeIsNotice">
+                                <label for="writeIsNotice">공지글로 등록 (상단 고정)</label>
+                            </div>
+                            <div class="board-form-actions">
+                                <button type="button" class="board-btn board-btn-outline" onclick="boardApp.backToList()">취소</button>
+                                <button type="submit" class="board-btn board-btn-primary">${editId ? '수정 완료' : '등록'}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>`;
+        }
+
+        async function showEditForm(id) {
+            if (!isAdmin) return;
+            let post = null;
+            if (firebaseReady) {
+                try {
+                    const doc = await db.collection('posts').doc(id).get();
+                    if (doc.exists) post = { id: doc.id, ...doc.data() };
+                } catch (e) { console.error(e); }
+            }
+            if (!post) {
+                for (const cat of Object.values(DEMO_DATA)) {
+                    post = cat.find(p => p.id === id);
+                    if (post) break;
+                }
+            }
+            if (!post) return;
+
+            showWriteForm(id);
+            setTimeout(() => {
+                const t = document.getElementById('writeTitle');
+                const c = document.getElementById('writeContent');
+                const cat = document.getElementById('writeCategory');
+                const n = document.getElementById('writeIsNotice');
+                if (t) t.value = post.title || '';
+                if (c) c.value = post.content || '';
+                if (cat) cat.value = post.category || currentCategory;
+                if (n) n.checked = !!post.isNotice;
+            }, 50);
+        }
+
+        // ── Save Post ──
+        async function savePost(editId) {
+            if (!isAdmin || !firebaseReady) {
+                if (!firebaseReady) return alert('Firebase 설정이 필요합니다.\nfirebaseConfig를 실제 값으로 교체해 주세요.');
+                return;
+            }
+            const title = document.getElementById('writeTitle').value.trim();
+            const content = document.getElementById('writeContent').value.trim();
+            const category = document.getElementById('writeCategory').value;
+            const isNotice = document.getElementById('writeIsNotice').checked;
+
+            if (!title || !content) return alert('제목과 내용을 입력해 주세요.');
+
+            const postData = {
+                title, content, category, isNotice,
+                author: currentUser.displayName || currentUser.email,
+                authorEmail: currentUser.email,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+
+            try {
+                if (editId) {
+                    await db.collection('posts').doc(editId).update(postData);
+                } else {
+                    postData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+                    postData.date = new Date().toISOString().split('T')[0];
+                    postData.views = 0;
+                    await db.collection('posts').add(postData);
+                }
+                currentCategory = category;
+                updateTabUI();
+                backToList();
+                loadPosts();
+            } catch (e) {
+                console.error('저장 실패:', e);
+                alert('저장에 실패했습니다: ' + e.message);
+            }
+        }
+
+        // ── Delete Post ──
+        async function deletePost(id) {
+            if (!isAdmin) return;
+            if (!confirm('이 게시글을 삭제하시겠습니까?')) return;
+
+            if (firebaseReady) {
+                try {
+                    await db.collection('posts').doc(id).delete();
+                    backToList();
+                    loadPosts();
+                } catch (e) {
+                    console.error('삭제 실패:', e);
+                    alert('삭제에 실패했습니다.');
+                }
+            } else {
+                alert('데모 모드에서는 삭제할 수 없습니다.');
+            }
+        }
+
+        // ── Navigation ──
+        function switchTab(category) {
+            currentCategory = category;
+            currentPage = 1;
+            searchQuery = '';
+            const searchInput = document.getElementById('boardSearchInput');
+            if (searchInput) searchInput.value = '';
+            updateTabUI();
+            showListView();
+            loadPosts();
+        }
+
+        function updateTabUI() {
+            document.querySelectorAll('.board-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.category === currentCategory);
+            });
+        }
+
+        function goPage(page) {
+            currentPage = page;
+            loadPosts();
+            document.getElementById('board').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function search() {
+            searchQuery = (document.getElementById('boardSearchInput').value || '').trim();
+            currentPage = 1;
+            loadPosts();
+        }
+
+        function backToList() { showListView(); }
+
+        function showListView() {
+            document.getElementById('boardListView').style.display = 'block';
+            document.getElementById('boardPostView').style.display = 'none';
+            document.getElementById('boardWriteView').style.display = 'none';
+        }
+
+        // ── Utilities ──
+        function escHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function formatDate(d) {
+            if (!d) return '-';
+            if (typeof d === 'string') {
+                return d.length >= 10 ? d.substring(5, 10).replace('-', '.') : d;
+            }
+            if (d.toDate) d = d.toDate();
+            if (d instanceof Date) {
+                const m = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                return `${m}.${day}`;
+            }
+            return '-';
+        }
+
+        // Init on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+        // Public API
+        return {
+            switchTab, goPage, search, viewPost, showWriteForm, showEditForm,
+            savePost, deletePost, backToList, login, logout
+        };
+    })();
+    </script>
+</body>
+</html>
