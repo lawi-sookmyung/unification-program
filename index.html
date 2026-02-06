@@ -1387,7 +1387,11 @@
             object-fit: contain;
             border-radius: 50%;
             flex-shrink: 0;
-            filter: brightness(0) invert(1);
+            filter: none;
+            background: white;
+            padding: 6px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 8px rgba(255,255,255,0.15);
         }
 
         .footer-brand h3 {
@@ -2255,6 +2259,68 @@
         </div>
     </section>
 
+    <!-- Board Section - 게시판 -->
+    <section id="board">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">BOARD</span>
+                <h2 class="section-title">게시판</h2>
+                <p class="section-desc">사업단 공지사항 및 소식을 확인하세요</p>
+            </div>
+
+            <!-- Auth Bar -->
+            <div class="board-auth-bar">
+                <div id="boardAuthArea"></div>
+            </div>
+
+            <!-- Board Container -->
+            <div id="boardContainer">
+                <!-- Tabs -->
+                <div class="board-tabs">
+                    <button class="board-tab active" data-category="notice" onclick="boardApp.switchTab('notice')">공지사항</button>
+                    <button class="board-tab" data-category="free" onclick="boardApp.switchTab('free')">자유게시판</button>
+                    <button class="board-tab" data-category="resource" onclick="boardApp.switchTab('resource')">자료실</button>
+                </div>
+
+                <!-- Search & Write -->
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
+                    <div class="board-search" style="margin-bottom:0; flex:1; min-width:250px;">
+                        <input type="text" id="boardSearchInput" placeholder="검색어를 입력하세요" onkeyup="if(event.key==='Enter') boardApp.search()">
+                        <button class="board-btn board-btn-primary board-btn-sm" onclick="boardApp.search()">검색</button>
+                    </div>
+                    <div id="boardWriteBtn"></div>
+                </div>
+
+                <!-- Board List View -->
+                <div id="boardListView">
+                    <div class="board-table-wrap">
+                        <table class="board-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-no">번호</th>
+                                    <th class="col-title">제목</th>
+                                    <th class="col-author">작성자</th>
+                                    <th class="col-date">작성일</th>
+                                    <th class="col-views">조회</th>
+                                </tr>
+                            </thead>
+                            <tbody id="boardTableBody">
+                                <tr><td colspan="5" class="board-loading"><div class="spinner"></div>로딩 중...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="board-pagination" id="boardPagination"></div>
+                </div>
+
+                <!-- Post View -->
+                <div id="boardPostView" style="display:none;"></div>
+
+                <!-- Write / Edit View -->
+                <div id="boardWriteView" style="display:none;"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section - 오시는 길 -->
     <section id="contact">
         <div class="section-container">
@@ -2344,68 +2410,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Board Section - 게시판 -->
-    <section id="board">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag">BOARD</span>
-                <h2 class="section-title">게시판</h2>
-                <p class="section-desc">사업단 공지사항 및 소식을 확인하세요</p>
-            </div>
-
-            <!-- Auth Bar -->
-            <div class="board-auth-bar">
-                <div id="boardAuthArea"></div>
-            </div>
-
-            <!-- Board Container -->
-            <div id="boardContainer">
-                <!-- Tabs -->
-                <div class="board-tabs">
-                    <button class="board-tab active" data-category="notice" onclick="boardApp.switchTab('notice')">공지사항</button>
-                    <button class="board-tab" data-category="free" onclick="boardApp.switchTab('free')">자유게시판</button>
-                    <button class="board-tab" data-category="resource" onclick="boardApp.switchTab('resource')">자료실</button>
-                </div>
-
-                <!-- Search & Write -->
-                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
-                    <div class="board-search" style="margin-bottom:0; flex:1; min-width:250px;">
-                        <input type="text" id="boardSearchInput" placeholder="검색어를 입력하세요" onkeyup="if(event.key==='Enter') boardApp.search()">
-                        <button class="board-btn board-btn-primary board-btn-sm" onclick="boardApp.search()">검색</button>
-                    </div>
-                    <div id="boardWriteBtn"></div>
-                </div>
-
-                <!-- Board List View -->
-                <div id="boardListView">
-                    <div class="board-table-wrap">
-                        <table class="board-table">
-                            <thead>
-                                <tr>
-                                    <th class="col-no">번호</th>
-                                    <th class="col-title">제목</th>
-                                    <th class="col-author">작성자</th>
-                                    <th class="col-date">작성일</th>
-                                    <th class="col-views">조회</th>
-                                </tr>
-                            </thead>
-                            <tbody id="boardTableBody">
-                                <tr><td colspan="5" class="board-loading"><div class="spinner"></div>로딩 중...</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="board-pagination" id="boardPagination"></div>
-                </div>
-
-                <!-- Post View -->
-                <div id="boardPostView" style="display:none;"></div>
-
-                <!-- Write / Edit View -->
-                <div id="boardWriteView" style="display:none;"></div>
             </div>
         </div>
     </section>
