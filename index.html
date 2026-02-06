@@ -2364,7 +2364,7 @@
                             </div>
                             <div class="contact-item-content">
                                 <h4>이메일</h4>
-                                <p><a href="/cdn-cgi/l/email-protection#5d2e306f6f686c6c1d2e323236302428333a733c3e73362f"><span class="__cf_email__" data-cfemail="31425c030304000071425e5e5a5c48445f561f50521f5a43">[email&#160;protected]</span></a></p>
+                                <p><a href="mailto:sm22511@sookmyung.ac.kr">sm22511@sookmyung.ac.kr</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -2662,7 +2662,7 @@
                 area.innerHTML = `
                     <div class="auth-user">
                         <img src="${currentUser.photoURL || ''}" alt="" onerror="this.style.display='none'">
-                        <span>${currentUser.displayName || currentUser.email}</span>
+                        <span>${currentUser.displayName || (isAdmin ? '관리자' : currentUser.email)}</span>
                         ${isAdmin ? '<span class="admin-badge">관리자</span>' : ''}
                     </div>
                     <button class="board-btn board-btn-outline board-btn-sm" onclick="boardApp.logout()">로그아웃</button>`;
